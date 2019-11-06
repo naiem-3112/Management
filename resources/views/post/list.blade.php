@@ -13,7 +13,7 @@
                         <tr>
                             <th>Title</th>
                             <th>Writer</th>
-                            <th>Body</th>
+                            <th width="50%">Body</th>
                             <th>Tag</th>
                             <th>Action</th>
                         </tr>
@@ -26,8 +26,9 @@
                                 <td>{{ $post->body }}</td>
                                 <td>{{ $post->tag }}</td>
                                 <td>
-                                    <a href="{{ route('post.edit', $post->id) }}" >Edit</a>
-                                    <a href="{{ route('post.delete', $post->id) }}" >Delete</a>
+                                    <a class="btn btn-warning btn-sm" href="{{ route('post.edit', $post->id) }}" >Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="{{ route('post.delete', $post->id) }}" >Delete</a>
+                                    <a class="btn btn-dark btn-sm" href="{{ route('post.show', $post->id) }}" >Show</a>
                                 </td>
                             </tr>
                         @endforeach

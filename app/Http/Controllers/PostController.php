@@ -48,7 +48,7 @@ class PostController extends Controller
             'body' => 'required',
             'tag' => 'required'
         ]);
-        $updatePost = Post::find($id);
+        $updatePost = Post::findOrfail($id);
         $updatePost->title = $request->title;
         $updatePost->writer = $request->writer;
         $updatePost->body = $request->body;
@@ -61,8 +61,15 @@ class PostController extends Controller
     {
         $postDelete = Post::findOrfail($id);
         $postDelete->delete();
+        $postDelete->comments()->detach();
         return redirect('post/list');
 
     }
+    public function show($id){
+        $postShows = Post::all();
+        return view('post.show', compact('postShows'));
+    }
+
+
 
 }
